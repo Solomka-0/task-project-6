@@ -1,6 +1,6 @@
-# Nuxt 3
+## Пример работы
 
-Просмотрите [документацию по Nuxt 3](https://nuxt.com/docs/getting-started/introduction) чтобы узнать больше.
+![Скриншот](screen.png)
 
 ## Развертывание
 
