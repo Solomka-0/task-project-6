@@ -1,0 +1,6 @@
+.home-page {
+  &__greeting-block {
+    @apply flex gap-3 items-center;
+    @apply text-[16px];
+  }
+}

@@ -1,0 +1,58 @@
+.f-input {
+  flex-flow: column;
+  @apply flex flex-col;
+
+  &[readonly] {
+    input {
+      @apply bg-[#F6F6F6];
+    }
+  }
+
+  &__input {
+    @apply w-[100%];
+    @apply h-[40px];
+    @apply px-[12px] py-[6px];
+    @apply border border-solid border-[#e2e2e2] rounded;
+    @apply text-[#555] leading-[1.42857143] text-[14px];
+  }
+
+  &__input_checkbox {
+    @apply h-[16px] w-[16px];
+
+    //&:checked {
+    //  @apply bg-primary-blue;
+    //}
+  }
+
+  &__label {
+    @apply text-[12px] text-[#516072] font-[400] leading-7;
+  }
+
+  input {
+    order: 2;
+    @apply bg-white;
+
+    &:placeholder-shown {
+      @apply bg-[#F6F6F6];
+    }
+  }
+
+  input:invalid ~ label {
+    &:after {
+      content: 'неверно';
+      @apply text-red-500 font-[400];
+      @apply float-end;
+    }
+  }
+
+  input:focus {
+    @apply border-[#409FF6] bg-white;
+  }
+
+  input:focus ~ label {
+    order: 1;
+    @apply text-[#0D60C7] font-[500];
+  }
+}
+
+@import "./finput_mobile.scss";

@@ -1,0 +1,6 @@
+.nuxt
+.gitignore
+node_modules
+.hack
+package-lock.json
+README.md

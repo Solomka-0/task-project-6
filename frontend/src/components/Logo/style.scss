@@ -1,0 +1,10 @@
+.logo {
+  @apply bg-blue-200;
+  @apply py-1.5 px-1.5;
+  @apply w-fit;
+  @apply rounded-xl;
+  img {
+    //filter: brightness(0) saturate(100%) invert(78%) sepia(77%) saturate(1956%) hue-rotate(2deg) brightness(107%) contrast(104%);
+    @apply w-[64px] text-yellow-300;
+  }
+}

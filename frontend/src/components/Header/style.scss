@@ -1,0 +1,41 @@
+.header {
+  @apply bg-blue-300;
+
+  .container {
+    @apply pt-3;
+    @apply flex flex-col gap-3;
+  }
+
+  &__logo {
+    @apply flex flex-row gap-3;
+  }
+
+  &__logo-caption {
+    @apply text-[21px];
+    @apply font-bold;
+  }
+
+  &__logo-description {
+    @apply text-gray-700;
+  }
+
+  &__nav {
+    @apply text-[16px];
+    @apply flex flex-row gap-2;
+  }
+
+  &__nav-item {
+    @apply pt-1.5 pb-0.5 px-2;
+    @apply rounded-t-xl;
+    @apply bg-zinc-50;
+
+    &:not(&_active) {
+      @apply hover:text-red-700;
+    }
+
+    &_active {
+      @apply font-[500];
+      @apply text-blue-800;
+    }
+  }
+}

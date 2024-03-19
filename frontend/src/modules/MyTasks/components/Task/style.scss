@@ -1,0 +1,82 @@
+div:has(>.task) {
+  @apply bg-zinc-100;
+
+  @apply overflow-hidden;
+}
+
+.task {
+  padding-bottom: 100%;
+  @apply bg-[var(--bg)];
+  @apply cursor-pointer;
+  @apply rounded-lg;
+  @apply relative;
+
+  --bg-default: #ff5353;
+
+  --bg: var(--bg-default);
+
+  &:hover {
+    @apply opacity-85;
+  }
+
+  &__dec {
+    @apply absolute;
+    @apply bg-[var(--bg)];
+    @apply w-[150%] h-[150%];
+    @apply rounded-2xl;
+
+    &_none {
+      @apply hidden;
+    }
+
+    &_hide {
+      @apply bg-zinc-100;
+    }
+
+    &_top {
+      @apply top-[-20%];
+      @apply w-[33%] left-[calc(120%/2-50%/2)];
+      @apply h-[40%];
+    }
+
+    &_bottom {
+      @apply bottom-[-20%];
+      @apply w-[33%] left-[calc(120%/2-50%/2)];
+      @apply h-[40%];
+    }
+
+    &_left {
+      @apply left-[-20%];
+      @apply h-[33%] top-[calc(120%/2-50%/2)];
+      @apply w-[40%];
+    }
+    &_right {
+      @apply right-[-20%];
+      @apply h-[33%] top-[calc(120%/2-50%/2)];
+      @apply w-[40%];
+    }
+  }
+
+  &__body {
+    @apply absolute;
+    @apply p-1;
+    @apply z-[1];
+    @apply overflow-hidden;
+    @apply leading-4;
+    @apply top-[5%] left-[5%];
+    @apply w-[90%] h-[90%];
+    @apply flex flex-col gap-2;
+  }
+
+  &__caption {
+    @apply text-gray-700;
+    @apply font-bold;
+  }
+
+  &__description {
+    @apply px-2 pb-2;
+    @apply rounded-xl;
+    @apply w-min;
+    @apply text-white text-[12px] backdrop-blur;
+  }
+}

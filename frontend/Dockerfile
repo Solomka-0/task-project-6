@@ -1,0 +1,24 @@
+FROM node:18.18.0-alpine3.18
+
+RUN apk add --no-cache python3 py3-pip
+RUN ln -sf python3 /usr/bin/python
+
+WORKDIR /var/www/html
+
+COPY package.json .
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 8082
+EXPOSE 24678
+
+ENV PORT=8082
+ENV HOST=0.0.0.0
+ENV NODE_TLS_REJECT_UNAUTHORIZED=0
+
+
+RUN npx nuxi build
+
+CMD [ "node", "./.output/server/index.mjs" ]

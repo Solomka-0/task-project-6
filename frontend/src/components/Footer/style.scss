@@ -1,0 +1,29 @@
+.footer {
+  @apply bg-amber-300;
+  @apply flex flex-col gap-3;
+  @apply pt-4 pb-2;
+
+  &__content {
+    @apply flex gap-2 justify-start items-center;
+  }
+
+  &__logo {
+    @apply h-[54px] w-[54px];
+    @apply overflow-auto;
+  }
+
+  &__copymark {
+    @apply flex gap-2 items-end;
+  }
+
+  &__copymark-text {
+    @apply ml-[-4px];
+    @apply text-[12px] text-gray-700;
+    @apply pb-1;
+    @apply flex flex-col;
+  }
+
+  &__copymark-name {
+    @apply ml-[-6px] text-black;
+  }
+}

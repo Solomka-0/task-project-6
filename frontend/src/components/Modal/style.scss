@@ -1,0 +1,53 @@
+.modal {
+  box-shadow: 0 12px 30px rgba(0,0,0,.12);
+
+  @apply relative;
+  @apply w-[100%] max-w-[610px] max-h-[100%];
+  @apply px-4 py-4;
+  @apply bg-white rounded-[8px];
+
+  &__wrapper {
+    @apply px-2 pt-2;
+    @apply fixed;
+    @apply z-50;
+    @apply top-0 left-0;
+    @apply w-[100%] h-[100%];
+    @apply flex justify-center items-center;
+    @apply bg-[rgba(0,0,0,0.25)]
+  }
+
+  &__header {
+    //@apply relative;
+    @apply -mt-[0] mb-[24px];
+    @apply text-[16px] font-[500];
+    @apply w-[95%];
+  }
+
+  &__esc {
+    @apply content-[''];
+    @apply bg-[url("/ui/icons/close.svg")];
+
+    @apply top-[24px] right-[20px];
+    @apply -translate-y-1/2;
+    @apply bg-cover;
+    @apply w-[14px] h-[14px];
+    @apply absolute;
+    @apply cursor-pointer;
+  }
+
+  &__content {
+    @apply overflow-y-auto;
+    @apply h-[inherit];
+  }
+
+  &__action {
+    @apply w-min;
+    &_empty {
+      @apply cursor-pointer;
+    }
+  }
+}
+
+//.modal_large {
+//  @apply max-w-[860px] min-h-[625px];
+//}

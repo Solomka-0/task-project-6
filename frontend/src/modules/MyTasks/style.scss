@@ -1,0 +1,20 @@
+.mt-module {
+  .task-status {
+    @apply relative;
+    @apply inline-block;
+    @apply cursor-pointer;
+
+    --status-color: #ff5353;
+
+    @apply px-1.5;
+    @apply rounded-lg;
+    @apply text-white;
+    @apply drop-shadow;
+    @apply bg-[var(--status-color)];
+    @apply h-min;
+  }
+
+  &__input-text {
+    @apply w-[100%];
+  }
+}
