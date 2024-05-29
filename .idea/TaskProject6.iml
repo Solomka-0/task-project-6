@@ -12,7 +12,6 @@
       <sourceFolder url="file://$MODULE_DIR$/backend/tests/Unit" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/api/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/api/tests" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/backend/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/brick/math" />

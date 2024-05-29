@@ -14,7 +14,7 @@ export class BaseApiRequest<Request, Response> {
     protected endpoint
     protected method: ApiMethods = ApiMethods.POST
     protected _requestBody?: Request
-    protected _response?: Ref<Response>
+    protected _response: Ref<Response>
 
     constructor(requestBody?: Request) {
         this._requestBody = requestBody

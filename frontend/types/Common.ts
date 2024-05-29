@@ -7,6 +7,21 @@ export type Task = {
     updated_at?: string,
 }
 
+export enum Rule {
+    ADMIN = 'admin',
+    MANAGER = 'manager',
+    WORKER = 'worker'
+}
+
+export type User = {
+    id: number,
+    name: string,
+    email: string,
+    email_verified_at?: string,
+    rules: Rule[],
+    created_at: string,
+}
+
 export type Palette = {
     [key: string]: string,
 }

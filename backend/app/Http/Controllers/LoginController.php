@@ -11,7 +11,7 @@ class LoginController extends Controller
 {
     public function login(Request $request)
     {
-        if (!empty($request->attributes->all()['sanctum']) && !empty($request->headers->get('bearer'))) {
+        if (!empty($request->headers->get('bearer'))) {
             return response(['message' => 'Unauthorized'], 401);
         }
 

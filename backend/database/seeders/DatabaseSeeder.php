@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             TasksSeeder::class,
-            UsersSeeder::class,
+            DefaultAdminUserSeeder::class,
+            DefaultUsersSeeder::class,
         ]);
     }
 }

@@ -4,6 +4,7 @@ import {useLoader} from "~/src/components/Loader/composables/useLoader";
 import type {CookieRef} from "#app";
 import Logout from "~/api/endpoints/auth/Logout";
 import {reloadNuxtApp} from "#app";
+import type {User} from "~/types/Common";
 // import { APIGetUserResponse, APIUpdateSettingsResponse, APIUserEndpoints, User, UserSession, UserSettings } from "@/types/User"
 
 export const useUserStore = defineStore("user", {
@@ -12,7 +13,7 @@ export const useUserStore = defineStore("user", {
             token: CookieRef<any>
             user: CookieRef<any>
         },
-        user: object | null,
+        user: User | null,
         token: string | null,
     } => ({
         cookie: {
@@ -41,12 +42,10 @@ export const useUserStore = defineStore("user", {
             loader.setState(true)
             try {
                 const response = (await new Login(data).request())?.value
-                // this.cookie.token.value = undefined
-                // this.cookie.user.value = undefined
                 this.cookie.token = response.token
                 this.cookie.user = response.user
                 this.init()
-                reloadNuxtApp()
+                // reloadNuxtApp()
             } catch (e) {
                 this.cookie.token = undefined
                 this.cookie.user = undefined
