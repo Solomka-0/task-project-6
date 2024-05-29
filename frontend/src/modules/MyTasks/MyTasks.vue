@@ -33,7 +33,7 @@
 <script setup lang='ts'>
 import {useDefaultState} from './composables/useDefault'
 import Tasks from "~/src/modules/MyTasks/components/Tasks/Tasks.vue";
-import GetTasks from "~/api/endpoints/GetTasks";
+import GetTasks from "~/api/endpoints/tasks/GetTasks";
 import {taskStatusesPalette} from "~/types/Common";
 
 const ctx = useDefaultState()

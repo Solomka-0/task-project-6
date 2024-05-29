@@ -6,6 +6,15 @@
     @apply flex flex-col gap-3;
   }
 
+  &__content {
+    @apply flex items-center gap-3 justify-between;
+    @apply pr-5
+  }
+
+  &__logout {
+    @apply cursor-pointer;
+  }
+
   &__logo {
     @apply flex flex-row gap-3;
   }

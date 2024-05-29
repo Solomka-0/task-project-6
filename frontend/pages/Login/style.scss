@@ -1,0 +1,18 @@
+.login-page {
+  @apply pt-10;
+  .page-content {
+    @apply flex flex-col items-center justify-center;
+    @apply h-[100%];
+  }
+
+  .login-form {
+    @apply bg-white;
+    @apply p-4;
+    @apply flex flex-col gap-2;
+    @apply min-w-[40%];
+    @apply border border-solid border-gray-200 rounded-xl;
+    &__footnote {
+      @apply flex justify-end;
+    }
+  }
+}

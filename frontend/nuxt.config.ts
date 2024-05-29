@@ -73,8 +73,7 @@ export default defineNuxtConfig({
 
   routeRules: {
     "/api/**": {
-      // proxy: {to: "http://api/api/**"} // Minikube
-      proxy: {to: "http://127.0.0.1:8000/**"} // Local
+      proxy: {to: "http://127.0.0.1:8000/api/**"} // Local
     },
   }
 })

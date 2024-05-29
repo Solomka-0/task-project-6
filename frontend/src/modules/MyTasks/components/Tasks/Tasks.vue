@@ -15,7 +15,6 @@
 
         </div>
         <div class="tasks__modal-content tasks__task">
-          <!--          {{ useTasks.lastSelectedTask }}-->
           <div class="tasks__task-header">
             <div v-if="!ctx.form.edit.name" class="tasks__task-title" @click="ctx.form.edit.name = true">
               {{ useTasks.lastSelectedTask.name }}
@@ -58,10 +57,10 @@
 import {useDefaultState} from './composables/useDefault'
 import {taskStatusesPalette} from "~/types/Common";
 import {useTasksStore} from "~/stores/tasks";
-import GetTasks from "~/api/endpoints/GetTasks";
-import RemoveTask from "~/api/endpoints/RemoveTask";
-import StoreTask from "~/api/endpoints/StoreTask";
-import UpdateTask from "~/api/endpoints/UpdateTask";
+import GetTasks from "~/api/endpoints/tasks/GetTasks";
+import RemoveTask from "~/api/endpoints/tasks/RemoveTask";
+import StoreTask from "~/api/endpoints/tasks/StoreTask";
+import UpdateTask from "~/api/endpoints/tasks/UpdateTask";
 import Task from "~/src/modules/MyTasks/components/Task/Task.vue";
 
 const ctx = useDefaultState()

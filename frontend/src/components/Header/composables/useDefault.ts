@@ -1,3 +1,6 @@
+// import {Logout} from '@/api/endpoints/auth/Logout'
+import {useUserStore} from "~/stores/user";
+
 export const useDefaultState = () => useState('header', () => (<{
     state: boolean
     nav: { title: string, path: string }[],
@@ -8,5 +11,8 @@ export const useDefaultState = () => useState('header', () => (<{
             title: "Главная",
             path: "/"
         },
-    ]
+    ],
+    logout: async () => {
+        await useUserStore().logout()
+    }
 }))

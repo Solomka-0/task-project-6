@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header/>
-    <div class="default-layout page-content min-h-[71vh]">
+    <div class="default-layout page-content min-h-[80vh]">
       <slot/>
     </div>
     <Footer/>

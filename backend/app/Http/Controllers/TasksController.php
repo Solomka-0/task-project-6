@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 
 class TasksController extends Controller
 {
@@ -17,8 +18,6 @@ class TasksController extends Controller
      */
     public function index(Request $request)
     {
-        // Обработка фильтров
-
         $tasksQuery = Task::query();
 
         $tasksQuery = $tasksQuery->when(

@@ -1,6 +1,7 @@
 import type {APIResponse} from "~/types/APIResponse";
 import type {Ref} from "@vue/reactivity";
 import {distDir} from "@nuxt/devtools/dist/dirs";
+import {useUserStore} from "~/stores/user";
 
 export enum ApiMethods {
     GET = "GET",
@@ -42,7 +43,19 @@ export class BaseApiRequest<Request, Response> {
                 options['body'] = this._requestBody ?? body
             }
 
+            if (!!useUserStore().token) {
+                options['headers'] = {
+                    'Bearer': useUserStore().token,
+                }
+            }
+
             const response = await $fetch<APIResponse<Response>>(this.endpoint + (id ? `${id}` : '') + (query ?? ''), options)
+                .catch((error) => {
+                    switch (error.status) {
+                        case 401:
+                            useUserStore().logout()
+                    }
+                })
             this._response = ref(response)
 
             if (!!callback) {

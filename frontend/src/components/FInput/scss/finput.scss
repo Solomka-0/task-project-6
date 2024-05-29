@@ -10,7 +10,7 @@
 
   &__input {
     @apply w-[100%];
-    @apply h-[40px];
+    @apply h-[32px];
     @apply px-[12px] py-[6px];
     @apply border border-solid border-[#e2e2e2] rounded;
     @apply text-[#555] leading-[1.42857143] text-[14px];
@@ -25,7 +25,7 @@
   }
 
   &__label {
-    @apply text-[12px] text-[#516072] font-[400] leading-7;
+    @apply text-[12px] text-[#516072] font-[400] leading-4;
   }
 
   input {
