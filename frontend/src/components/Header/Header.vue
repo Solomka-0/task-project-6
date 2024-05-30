@@ -2,7 +2,7 @@
   <div class=header>
     <div class="container">
       <div class="header__content">
-        <div class="header__logo">
+        <nuxt-link to="/" class="header__logo">
           <logo/>
           <div class="header__logo-text">
             <div class="header__logo-caption">
@@ -12,7 +12,7 @@
               Лучший примитивный менеджер для ваших задач!
             </div>
           </div>
-        </div>
+        </nuxt-link>
       </div>
       <div class="header__nav">
         <nuxt-link :to="item.path" v-for="item in nav"

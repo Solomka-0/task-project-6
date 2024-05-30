@@ -16,6 +16,7 @@
   }
 
   &__logo {
+    @apply cursor-pointer;
     @apply flex flex-row gap-3;
   }
 

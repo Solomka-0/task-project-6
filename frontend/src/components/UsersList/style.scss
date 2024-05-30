@@ -1,0 +1,7 @@
+.users-list {
+  &__item {
+    @apply w-[100%];
+    @apply cursor-pointer;
+    @apply flex gap-2 justify-between;
+  }
+}
