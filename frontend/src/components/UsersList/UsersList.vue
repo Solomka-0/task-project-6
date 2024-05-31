@@ -4,7 +4,12 @@
       <div class="users-list__name">{{ user.name }}</div>
       <div class="users-list__email">{{ user.email }}</div>
     </div>
-    <nuxt-link v-else :to="localePath($getPageName('Profile'))" class=users-list__item v-for="user in users">
+    <nuxt-link v-else :to="localePath({
+    name: $getPageName('Profile'),
+    params: {
+      id: user.id
+    }
+    })" class=users-list__item v-for="user in users">
       <div class="users-list__name">{{ user.name }}</div>
       <div class="users-list__email">{{ user.email }}</div>
     </nuxt-link>

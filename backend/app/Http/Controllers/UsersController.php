@@ -19,6 +19,11 @@ class UsersController extends Controller
         return $userQuery->get();
     }
 
+    public function show(User $user)
+    {
+        return $user;
+    }
+
     public function store()
     {
         dd('store');

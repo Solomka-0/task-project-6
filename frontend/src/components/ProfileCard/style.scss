@@ -1,0 +1,19 @@
+.profile-card {
+  @apply flex gap-4;
+
+  &__name {
+    @apply text-[18px] font-[500];
+  }
+
+  &__email {
+
+  }
+
+  &__rules {
+
+  }
+
+  &__created-at {
+
+  }
+}

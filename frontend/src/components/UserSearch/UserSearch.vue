@@ -27,11 +27,7 @@ const search = ref('')
 const selected = defineModel<User | undefined>()
 
 watch(search, () => {
-  searchPending.pending(async () => {
-    if (!!search.value) {
-      await useUsersStore().usersLike(search.value)
-    }
-  })
+  searchPending.pending(з)
 })
 
 function onSelect(user: User) {

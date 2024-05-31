@@ -28,6 +28,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::apiResource('/tasks', \App\Http\Controllers\TasksController::class);
     Route::apiResource('/users', \App\Http\Controllers\UsersController::class);
+    Route::apiResource('/projects', \App\Http\Controllers\ProjectController::class);
 });
 
 //Route::apiResource('/tasks', \App\Http\Controllers\TasksController::class)

@@ -73,14 +73,5 @@ export class BaseApiRequest<Request, Response> {
 
     set requestBody(requestBody: Request) {
         this._requestBody = requestBody
-        console.log('nice', this._requestBody)
     }
-
-    // get responseBody(): Response {
-    //     if (this._responseBody === undefined) {
-    //         // this._getResponse()
-    //         console.log('undefined')
-    //     }
-    //     return this._responseBody!
-    // }
 }

@@ -8,9 +8,9 @@ export type Task = {
 }
 
 export enum Rule {
-    ADMIN = 'admin',
-    MANAGER = 'manager',
-    WORKER = 'worker'
+    'admin' = 'Администратор',
+    'manager' = 'Руководитель',
+    'worker' = 'Исполнитель'
 }
 
 export type User = {
