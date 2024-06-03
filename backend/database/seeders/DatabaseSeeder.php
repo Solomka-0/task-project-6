@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             TasksSeeder::class,
             DefaultAdminUserSeeder::class,
             DefaultUsersSeeder::class,
+            DefaultProjectsSeeder::class,
+            InitUsersSeeder::class,
         ]);
     }
 }
