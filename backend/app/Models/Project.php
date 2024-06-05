@@ -6,10 +6,17 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Facades\Auth;
 use Ramsey\Collection\Collection;
 
 /**
+ * @property int $id
+ * @property string $name
+ * @property string $description
+ * @property mixed $analytics
+ *
  * @property Collection $tasks
+ * @property Collection $users
  */
 class Project extends Model
 {
@@ -33,6 +40,14 @@ class Project extends Model
         'analytics'
     ];
 
+    protected $user = null;
+
+    public function setUser(User $user): self
+    {
+        $this->user = $user;
+        return $this;
+    }
+
     public function users()
     {
         return $this->belongsToMany(User::class);
@@ -50,9 +65,19 @@ class Project extends Model
 
     public function getAnalyticsAttribute()
     {
-        $lastMonthTasks = $this->tasks()->where('end_at', '>=', Carbon::now()->subMonth())->get();
-        $lastDayTasks = $this->tasks()->where('end_at', '>=', Carbon::now()->subDay())->get();
-        $lastWeekTasks = $this->tasks()->where('end_at', '>=', Carbon::now()->subWeek())->get();
+        $lastMonthTasks = $this->tasks()->where('end_at', '>=', Carbon::now()->subMonth());
+        $lastDayTasks = $this->tasks()->where('end_at', '>=', Carbon::now()->subDay());
+        $lastWeekTasks = $this->tasks()->where('end_at', '>=', Carbon::now()->subWeek());
+
+        if (!empty($this->user)) {
+            $lastMonthTasks = $lastMonthTasks->where('user_id', '=', $this->user->id);
+            $lastDayTasks = $lastDayTasks->where('user_id', '=', $this->user->id);
+            $lastWeekTasks = $lastWeekTasks->where('user_id', '=', $this->user->id);
+        }
+
+        $lastMonthTasks = $lastMonthTasks->get();
+        $lastDayTasks = $lastDayTasks->get();
+        $lastWeekTasks = $lastWeekTasks->get();
 
         function getTime($tasks)
         {

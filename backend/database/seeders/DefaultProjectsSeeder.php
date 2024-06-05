@@ -43,7 +43,7 @@ class DefaultProjectsSeeder extends Seeder
             /** @var Project $projectItem */
             $projectItem = Project::query()->firstOrCreate(['name' => $item['name']], $item);
             $projectItem->tasks()->detach();
-            foreach (range(1, 60 * 6) as $index) {
+            foreach (range(1, 600) as $index) {
                 /** @var Task $taskItem */
                 $taskItem = Task::query()->firstOrCreate(['name' => "{$item['name']}: Задача $index"],
                     array_merge(['description' => 'Пустое описание задачи']));
