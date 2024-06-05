@@ -20,6 +20,7 @@ use Ramsey\Collection\Collection;
  * @property ?DateTime $updated_at
  * @property ?DateTime $start_at
  * @property ?DateTime $end_at
+ * @property ?int $exec_time
  *
  * @property Collection $projects
  * @property DateTime minCreatedTime

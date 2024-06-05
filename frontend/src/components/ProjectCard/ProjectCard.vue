@@ -2,6 +2,24 @@
   <div class=project-card>
     <div class="project-card__name">{{ project!.name }}</div>
     <div class="project-card__description">{{ project!.description }}</div>
+    <div v-if="project!.analytics" class="project-card__analytics">
+      <div class="project-card__analytics-time">
+        <div class="project-card__label">С начала проекта</div>
+        <div class="project-card__value">{{ project!.analytics.time.full }} ч.</div>
+      </div>
+      <div class="project-card__analytics-time">
+        <div class="project-card__label">За месяц</div>
+        <div class="project-card__value">{{ project!.analytics.time.last_month }} ч.</div>
+      </div>
+      <div class="project-card__analytics-time">
+        <div class="project-card__label">За неделю</div>
+        <div class="project-card__value">{{ project!.analytics.time.last_week }} ч.</div>
+      </div>
+      <div class="project-card__analytics-time">
+        <div class="project-card__label">За день</div>
+        <div class="project-card__value">{{ project!.analytics.time.last_day }} ч.</div>
+      </div>
+    </div>
     <div class="project-card__items">
       <div class="project-card__users-bar">
         <div class="project-card__users-label">Команда</div>

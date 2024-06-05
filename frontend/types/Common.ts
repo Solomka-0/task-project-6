@@ -6,6 +6,14 @@ export type Project = {
     updated_at: string,
     tasks: Task[],
     users: User[],
+    analytics?: {
+        time: {
+            full: number,
+            last_month: number,
+            last_day: number,
+            last_week: number,
+        }
+    }
 }
 
 export type Task = {

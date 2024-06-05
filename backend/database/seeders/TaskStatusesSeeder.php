@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Enums\TaskStatus;
 use App\Models\Task;
+use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -37,8 +38,13 @@ class TaskStatusesSeeder extends Seeder
         foreach (Task::all() as $task) {
             $minDateTime = $task->minCreatedTime();
             $index = rand(0, count($statuses) - 1);
-            $task->start_at = $statuses[$index]['start_at'] ? $minDateTime->addHours(rand(1, 24 * 10))->toDateTime() : null;
-            $task->end_at = $statuses[$index]['end_at'] ? $task->start_at->addHours(rand(1, 24 * 8))->toDateTime() : null;
+            $task->start_at = $statuses[$index]['start_at'] ? $minDateTime->addHours(rand(1, 24 * 30 * 6)) : null;
+            /** @var \DateTime $startAt */
+            $task->end_at = $statuses[$index]['end_at'] ? $task->start_at->addHours(rand(1, 24 * 8)) : null;
+
+            if (!empty($task->end_at) && Carbon::now()->lt(Carbon::parse($task->end_at->format('Y-m-d H:i:s')))) {
+                $task->end_at = Carbon::now();
+            }
             $task->status = $statuses[$index]['status'];
             $task->save();
         }

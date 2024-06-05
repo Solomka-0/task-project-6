@@ -71,6 +71,84 @@ class DefaultUsersSeeder extends Seeder
                 'password' => bcrypt('default'),
                 'rules' => [Role::WORKER],
             ],
+            [
+                'name' => 'Екатерина Фомина',
+                'email' => 'worker6@yandex.ru',
+                'password' => bcrypt('default'),
+                'rules' => [Role::WORKER],
+            ],
+            [
+                'name' => 'Тихон Кузьмин',
+                'email' => 'worker7@yandex.ru',
+                'password' => bcrypt('default'),
+                'rules' => [Role::WORKER],
+            ],
+            [
+                'name' => 'Давид Киселев',
+                'email' => 'worker8@yandex.ru',
+                'password' => bcrypt('default'),
+                'rules' => [Role::WORKER],
+            ],
+            [
+                'name' => 'Глеб Гуров',
+                'email' => 'worker9@yandex.ru',
+                'password' => bcrypt('default'),
+                'rules' => [Role::WORKER],
+            ],
+            [
+                'name' => 'Александр Мальцев',
+                'email' => 'worker10@yandex.ru',
+                'password' => bcrypt('default'),
+                'rules' => [Role::WORKER],
+            ],
+            [
+                'name' => 'Виталий Герасимов',
+                'email' => 'worker11@yandex.ru',
+                'password' => bcrypt('default'),
+                'rules' => [Role::WORKER],
+            ],
+            [
+                'name' => 'Николай Покровский',
+                'email' => 'worker12@yandex.ru',
+                'password' => bcrypt('default'),
+                'rules' => [Role::WORKER],
+            ],
+            [
+                'name' => 'Иван Поляков',
+                'email' => 'worker13@yandex.ru',
+                'password' => bcrypt('default'),
+                'rules' => [Role::WORKER],
+            ],
+            [
+                'name' => 'Матвей Колесников',
+                'email' => 'worker14@yandex.ru',
+                'password' => bcrypt('default'),
+                'rules' => [Role::WORKER],
+            ],
+            [
+                'name' => 'Соколов Артём',
+                'email' => 'worker15@yandex.ru',
+                'password' => bcrypt('default'),
+                'rules' => [Role::WORKER],
+            ],
+            [
+                'name' => 'Лазарев Фёдор',
+                'email' => 'worker16@yandex.ru',
+                'password' => bcrypt('default'),
+                'rules' => [Role::WORKER],
+            ],
+            [
+                'name' => 'Романов Гордей',
+                'email' => 'worker17@yandex.ru',
+                'password' => bcrypt('default'),
+                'rules' => [Role::WORKER],
+            ],
+            [
+                'name' => 'Никольский Дамир',
+                'email' => 'worker18@yandex.ru',
+                'password' => bcrypt('default'),
+                'rules' => [Role::WORKER],
+            ],
         ];
 
         foreach ($users as $user) {
