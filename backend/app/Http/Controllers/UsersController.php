@@ -21,7 +21,7 @@ class UsersController extends Controller
 
     public function show(User $user)
     {
-        return $user;
+        return $user->makeVisible('projects');
     }
 
     public function store()

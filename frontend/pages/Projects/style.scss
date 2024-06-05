@@ -1,0 +1,23 @@
+.projects-page {
+  .project-list {
+    @apply flex flex-col gap-4;
+    .project {
+      &__description {
+        @apply text-[14px] leading-4 text-gray-600;
+      }
+
+      &__items {
+        @apply mt-1;
+      }
+
+      &__tasks-label, &__users-label {
+        @apply border-dotted border-b-2 border-blue-100 rounded;
+        @apply px-2 pt-1;
+      }
+
+      &__tasks, &__users {
+        @apply px-2;
+      }
+    }
+  }
+}

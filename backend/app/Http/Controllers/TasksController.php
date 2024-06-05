@@ -36,7 +36,7 @@ class TasksController extends Controller
             }
         );
 
-        return $tasksQuery->get();
+        return $tasksQuery->get()->makeVisible(['exec_time', 'user'])->makeHidden(['user_id']);
     }
 
     /**

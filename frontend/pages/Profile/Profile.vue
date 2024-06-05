@@ -1,8 +1,9 @@
 <template>
   <div class="profile-page">
     <div class="page-content container">
-      <profile-card v-model="user"/>
-      <project-list/>
+      <profile-card v-if="user" v-model="user"/>
+      <div class="btn btn_primary">Назначить на проект</div>
+      <project-list v-model="user.projects"/>
     </div>
   </div>
 </template>
@@ -20,11 +21,13 @@ const nuxtApp = useNuxtApp()
 const $i = nuxtApp.$i(i18nPrefix)
 const route = useRoute()
 
-if (route.params.id) {
-  await useUsersStore().get(route.params.id)
-}
+useUsersStore().get(route.params.id)
 
-const user = route.params.id ? useUsersStore().user : useUserStore().user
+const {user} = route.params.id ? toRefs(useUsersStore()) : toRefs(useUserStore())
+
+// onMounted(() => {
+//   useUsersStore().get(route.params.id)
+// })
 
 defineI18nRoute({
   paths: {

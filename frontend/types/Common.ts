@@ -1,3 +1,13 @@
+export type Project = {
+    id: number,
+    name: string,
+    description: string,
+    created_at: string,
+    updated_at: string,
+    tasks: Task[],
+    users: User[],
+}
+
 export type Task = {
     id?: number,
     name: string,
@@ -20,6 +30,7 @@ export type User = {
     email_verified_at?: string,
     rules: Rule[],
     created_at: string,
+    projects: Project[]
 }
 
 export type Palette = {

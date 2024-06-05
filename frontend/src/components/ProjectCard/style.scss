@@ -1,0 +1,33 @@
+.project-card {
+  &__name {
+    @apply text-[21px] font-[500];
+  }
+
+  &__description {
+
+  }
+
+  &__items {
+
+  }
+
+  &__users-label, &__tasks-label {
+    @apply text-[21px] font-[500];
+  }
+
+  &__users {
+    .users-list {
+      @apply grid md:grid-cols-2 lg:grid-cols-3 gap-2;
+      @apply p-1 max-h-[16ch] overflow-auto;
+      &__item {
+        @apply rounded-xl;
+        @apply shadow;
+
+        img {
+          @apply max-h-[64px]
+        }
+      }
+    }
+  }
+
+}

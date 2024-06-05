@@ -1,1 +1,27 @@
-.project-list {}
+.project-list {
+  .project {
+    &__name {
+      @apply cursor-pointer;
+      @apply text-[18px] font-[500];
+    }
+
+    &__items {
+      @apply grid grid-cols-2 gap-2;
+    }
+
+    &__tasks, &__users {
+      transition: all .3s;
+      @apply overflow-hidden;
+    }
+
+    &__tasks-label, &__users-label {
+      @apply select-none;
+      @apply cursor-pointer;
+    }
+
+    &__users {
+      @apply max-h-[10ch];
+      @apply overflow-auto;
+    }
+  }
+}

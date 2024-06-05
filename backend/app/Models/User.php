@@ -5,6 +5,7 @@ namespace App\Models;
 use DateTime;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -33,6 +34,10 @@ class User extends Authenticatable
         'password',
     ];
 
+    protected $appends = [
+        'projects'
+    ];
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -41,6 +46,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'projects'
     ];
 
     /**
@@ -54,4 +60,14 @@ class User extends Authenticatable
         'updated_at' => 'datetime',
         'rules' => 'array'
     ];
+
+    public function getProjectsAttribute()
+    {
+        return $this->projects()->get()->makeVisible('tasks');
+    }
+
+    public function projects(): BelongsToMany
+    {
+        return $this->belongsToMany(Project::class);
+    }
 }

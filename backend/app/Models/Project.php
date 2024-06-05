@@ -20,9 +20,29 @@ class Project extends Model
         'description',
     ];
 
+    protected $appends = [
+        'tasks',
+        'users',
+    ];
+
+    protected $hidden = [
+        'tasks',
+        'users',
+    ];
+
     public function users()
     {
         return $this->belongsToMany(User::class);
+    }
+
+    public function getUsersAttribute()
+    {
+        return $this->users()->get();
+    }
+
+    public function getTasksAttribute()
+    {
+        return $this->tasks()->get()->sortByDesc('priority')->values();
     }
 
     public function tasks(): BelongsToMany

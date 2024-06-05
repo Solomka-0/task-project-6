@@ -56,7 +56,11 @@ const nav: NavItem[] = [
     path: localePath(getPageName('Home'))
   },
   {
-    caption: "Мои задачи",
+    caption: "Проекты",
+    path: localePath(getPageName('Projects'))
+  },
+  {
+    caption: "Задачи",
     path: localePath(getPageName('Tasks'))
   }
 ]
