@@ -1,0 +1,16 @@
+.puzzle-task-list {
+  text-align:center;
+  @apply inline-block;
+  word-break: break-all;
+
+  .puzzle-task {
+    @apply inline-block;
+    @apply w-[100%];
+    @apply ml-[-21px];
+    @apply mt-[-21px];
+  }
+
+  &__after {
+    word-break: keep-all;
+  }
+}

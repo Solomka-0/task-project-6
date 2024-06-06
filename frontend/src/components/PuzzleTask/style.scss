@@ -1,0 +1,41 @@
+.puzzle-task {
+  @apply relative;
+  @apply lg:max-w-[200px] md:max-w-[185px] sm:max-w-[170px];
+
+  svg {
+    transition: all .1s;
+  }
+
+  &:has(g>rect:hover, path:hover, &__caption:hover) {
+    @apply cursor-pointer;
+    path, g > rect {
+      stroke-width: 1px;
+      stroke-linecap: round;
+    }
+
+    svg {
+      transform: scale(1.05);
+      opacity: 0.95;
+      filter: drop-shadow(1vw 3px 3px rgba(142, 142, 142, 0.5));
+    }
+
+    .puzzle-task__caption {
+      transform: scale(1.02);
+    }
+  }
+
+  &__caption {
+    transition: all .2s;
+    @apply absolute;
+    @apply overflow-hidden leading-4;
+    @apply select-none;
+    -webkit-column-width: 120px;
+    column-width: 120px;
+    word-break: break-word;
+    text-shadow:
+            1px 1px #737373,
+            -1px -1px #737373,
+  ;
+    @apply font-bold text-white;
+  }
+}

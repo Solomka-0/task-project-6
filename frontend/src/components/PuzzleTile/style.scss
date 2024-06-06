@@ -1,0 +1,22 @@
+.puzzle-tile {
+  aspect-ratio: 1;
+  @apply flex items-center justify-center;
+  @apply h-[100%] w-[100%];
+  @apply min-w-[100px];
+  @apply min-h-[100px];
+
+  svg {
+    &.top-0 {
+      @apply pt-[12.5%];
+    }
+    &.left-0 {
+      @apply pl-[12.5%];
+    }
+    &.right-0 {
+      @apply pr-[12.5%];
+    }
+    &.bottom-0 {
+      @apply pb-[12.5%];
+    }
+  }
+}

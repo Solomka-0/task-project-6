@@ -1,20 +1,7 @@
 <template>
   <div class="home-page">
     <div class="page-content container">
-      <div class="home-page__greeting-block">
-        <img src="/images/homepage.png" class="max-w-[10vw] h-fit">
-        <div class="max-w-[500px]">
-          Приветствую!
-          <br>
-          <br>
-          Этот проект - решение тестового задания по теме создания
-          примитивного таск-менеджера.
-          Задание предполагало использование vuex, vue-router, работа с которыми заложена в nuxt
-          <br>
-          <br>
-          Основной функционал <nuxt-link :to="localePath(getPageName('Tasks'))" class="link">здесь</nuxt-link>
-        </div>
-      </div>
+      <div></div>
     </div>
   </div>
 </template>

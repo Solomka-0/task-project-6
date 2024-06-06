@@ -1,23 +1,25 @@
 <template>
   <div class="test-page">
     <div class="page-content container">
-      {{ selectedUser }}
-      <user-search v-model="selectedUser"/>
+      <puzzle-task-list v-model="tasks" class="flex-grow-1"/>
+<!--      <div class="flex items-center">-->
+<!--      </div>-->
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import {defineI18nRoute} from "#i18n";
-import type {User} from "~/types/Common";
-import UserSearch from "~/src/components/UserSearch/UserSearch.vue";
+import PuzzleTask from "~/src/components/PuzzleTask/PuzzleTask.vue";
+import PuzzleTaskList from "~/src/components/PuzzleTaskList/PuzzleTaskList.vue";
+import GetTasks from "~/api/endpoints/tasks/GetTasks";
 
 // i18
 const i18nPrefix = "pages.Test"
 const nuxtApp = useNuxtApp()
 const $i = nuxtApp.$i(i18nPrefix)
 
-const selectedUser = ref<User | undefined>()
+const tasks = (await new GetTasks().request()).value.slice(1,20)
 
 defineI18nRoute({
   paths: {
