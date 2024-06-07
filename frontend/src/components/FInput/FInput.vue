@@ -68,10 +68,8 @@ const emit = defineEmits(['update:value'])
 
 const onInput = (event) => {
   if (event instanceof CustomEvent && event.detail) {
-
     emit('update:value', event.detail.unmasked)
   }
-  // props.value = value.value
 }
 
 

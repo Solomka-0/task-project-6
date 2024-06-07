@@ -1,7 +1,7 @@
 <template>
   <div class="test-page">
     <div class="page-content container">
-      <puzzle-task-list v-model="tasks" class="flex-grow-1"/>
+      <puzzle-task-list v-model="tasks" class="flex-grow-1" @click:task="(task) => { console.log(task) }"/>
 <!--      <div class="flex items-center">-->
 <!--      </div>-->
     </div>

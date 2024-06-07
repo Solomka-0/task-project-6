@@ -1,12 +1,29 @@
 .project-list {
   .project {
+    transition: all 0.1s;
+    @apply relative;
+    @apply flex flex-col gap-2;
+
+    &__bookmark {
+      transition: all 0.1s;
+      @apply cursor-pointer;
+      @apply absolute top-[-5px] right-[30px];
+      @apply max-h-[24px];
+    }
+
+    &:hover {
+      transform: scale(1.01);
+
+      @apply shadow-md;
+
+      .project__bookmark {
+        transform: scale(1.1) scaleY(1.1) translateY(3px);
+      }
+    }
+
     &__name {
       @apply cursor-pointer;
       @apply text-[18px] font-[500];
-    }
-
-    &__items {
-      @apply grid grid-cols-2 gap-2;
     }
 
     &__tasks, &__users {

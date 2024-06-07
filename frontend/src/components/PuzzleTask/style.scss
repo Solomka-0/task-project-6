@@ -20,12 +20,13 @@
     }
 
     .puzzle-task__caption {
-      transform: scale(1.02);
+      transform: scale(1.05);
     }
   }
 
   &__caption {
-    transition: all .2s;
+    transition: all .1s;
+    @apply flex items-center mt-[-4px];
     @apply absolute;
     @apply overflow-hidden leading-4;
     @apply select-none;

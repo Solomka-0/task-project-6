@@ -44,9 +44,3 @@ export type User = {
 export type Palette = {
     [key: string]: string,
 }
-
-export const taskStatusesPalette: Palette = {
-    'not started': '#ff4d4d',
-    'in process': '#66a3e1',
-    'complete': '#75d267',
-}

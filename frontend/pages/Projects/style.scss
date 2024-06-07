@@ -1,7 +1,22 @@
 .projects-page {
   .project-list {
-    @apply flex flex-col gap-4;
+    @apply flex flex-col gap-3;
+
+    .puzzle-task-list {
+      @apply text-start;
+      @apply shadow-inner;
+      @apply bg-gray-100;
+      @apply rounded-xl;
+      @apply overflow-x-auto;
+    }
+
+    .puzzle-task {
+      @apply max-w-[130px];
+      @apply text-[12px];
+    }
+
     .project {
+      @apply p-2 rounded-xl border border-solid border-gray-300;
       &__description {
         @apply text-[14px] leading-4 text-gray-600;
       }

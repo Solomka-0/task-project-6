@@ -1,7 +1,8 @@
 <template>
-  <div ref="mainRef" class=puzzle-task-list>
-    <puzzle-task :tile="{left: 1, top: 0, right: 1, bottom: 0}" v-model="tasks[index]" v-for="(task, index) in tasks"/>
-    <puzzle-task :tile="{left: 2, top: 2, right: 2, bottom: 2}" v-for="index in count" class="invisible"/>
+  <div ref="mainRef" class="puzzle-task-list">
+    <div v-if="tiles.length > 0">
+      <puzzle-task :tile="tiles[index]" v-model="tasks[index]" v-for="(tile, index) in tiles" :class="{'invisible' : !tasks[index]}" @click:task="(task) => $emit('click:task', task)"/>
+    </div>
   </div>
 </template>
 
@@ -18,83 +19,61 @@ const $i = nuxtApp.$i(i18nPrefix)
 
 const tasks = defineModel<Task[]>()
 const mainRef = ref(null)
+const invisibleRef = ref(null)
 const colSize = ref(0)
 const rowSize = ref(0)
 const count = ref(0)
-const tiles = reactive([])
+const tiles = ref([])
+
 
 function render()
 {
-  function getRandomArbitrary(min, max) {
-    return Math.random() * (max - min) + min;
-  }
+  function tile(rowIndex, colIndex, topValue = null, leftValue = null)
+  {
+    function getRandomInt(min: number, max: number) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
 
-  let childs: HTMLCollection = mainRef.value.children
-
-  let bounds = <{tl:any, tr:any, bl:any, br:any,}>{
-    tl: null,
-    tr: null,
-    bl: null,
-    br: null,
-  }
-
-  bounds.tl = childs[0].getBoundingClientRect();
-  bounds.br = childs[childs.length - 1].getBoundingClientRect();
-
-  rowSize.value = parseInt(childs.length / colSize.value)
-  console.log(colSize.value, rowSize.value)
-
-  let tile = {
-    left: 1,
-    top: 0,
-    right: 1,
-    bottom: 0
-  }
-
-  for(let j = 0; j < rowSize.value; j++) {
-    for(let i = 0; i < colSize.value; i++) {
-      if (j === 0) {
-        tile.top = 2
-      } else {
-        tile.top = 0
-      }
-
-      if (i === 0) {
-        tile.left = 2
-      } else {
-        tile.left = 0
-      }
-
-      if (i === colSize.value - 1) {
-        tile.right = 2
-      } else {
-        tile.right = 0
-      }
-
-      if (j === rowSize.value - 1) {
-        tile.bottom = 2
-      } else {
-        tile.bottom = 0
-      }
-
-      tiles.push(tile)
+    return {
+      left: leftValue ? 1 - leftValue.right : 2,
+      top: topValue ? 1 - topValue.bottom : 2,
+      right: colIndex === colSize.value - 1 ? 2 : getRandomInt(0, 1),
+      bottom: rowIndex === rowSize.value - 1 ? 2 : getRandomInt(0, 1),
     }
   }
-  console.log(tiles)
+
+  let row: {left: 1, top: 0, right: 1, bottom: 0}[] = []
+  let tmpRow: {left: 1, top: 0, right: 1, bottom: 0}[] = []
+  let item = null
+
+  for(let i = 0; i < rowSize.value; i++) {
+    // Сравнение с предыдущей строкой
+    for(let j = 0; j < colSize.value; j++) {
+      item = tile(i, j, row[j], tmpRow[j - 1])
+      tmpRow.push(item)
+      tiles.value.push(item)
+    }
+    row = tmpRow
+    tmpRow = []
+  }
 }
 
-function computeInvisibleCount()
-{
+function getSizes() {
   let width = window.getComputedStyle(mainRef.value).width
-  width = Number.parseInt(width.match(/(\w*).*px/)[1])
-  colSize.value = Math.round(width / 200 + 0.13)
-  count.value = width == 1 ? 0 : width - tasks.value?.length % width
+  width = parseInt(width.match(/(\w*).*px/)[1])
+  colSize.value = Math.ceil(width > 330 ? (width > 440 ? width / 200 : width / 230) : 1)
+  rowSize.value = Math.ceil(tasks.value?.length / colSize.value)
 }
 
 onMounted(() => {
-  computeInvisibleCount()
+  getSizes()
   render()
 })
+
+defineEmits(["click:task"])
+
 </script>
 
 <style lang="scss">

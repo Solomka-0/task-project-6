@@ -1,6 +1,6 @@
 <template>
-  <div ref="mainRef" class=puzzle-task>
-    <puzzle-tile class="bg-red-500" :tile="props.tile"/>
+  <div ref="mainRef" class=puzzle-task @click="$emit('click:task', task)">
+    <puzzle-tile :style="{backgroundColor: taskStatusesPalette[task?.status]}" :tile="props.tile"/>
     <div class="puzzle-task__caption">
       {{ task?.name }}
     </div>
@@ -10,7 +10,7 @@
 <script setup lang='ts'>
 import { useDefaultState } from './composables/useDefault'
 import PuzzleTile from "~/src/components/PuzzleTile/PuzzleTile.vue";
-import type {Task} from "~/types/Common";
+import type {Palette, Task} from "~/types/Common";
 const ctx = useDefaultState()
 
 const mainRef = ref()
@@ -37,6 +37,14 @@ const {left, top, h, w} = {
   w: props.tile.right != 0 ? (props.tile.left != 0 ? "66%" : "56%") : (props.tile.left != 0 ? "56%" : "45%"),
   h: props.tile.bottom != 0 ? (props.tile.top != 0 ? "66%" : "56%") : (props.tile.top != 0 ? "56%" : "45%"),
 }
+
+const taskStatusesPalette: Palette = {
+  'not started': 'rgb(255 162 162)',
+  'in process': '#66a3e1',
+  'complete': 'rgb(97 193 82)',
+}
+
+defineEmits(["click:task"])
 
 </script>
 

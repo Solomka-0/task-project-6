@@ -1,13 +1,19 @@
 .puzzle-task-list {
+  @apply w-[100%];
   text-align:center;
   @apply inline-block;
   word-break: break-all;
 
+  &:first-child {
+    @apply pt-[20px];
+    @apply pl-[18px];
+  }
+
   .puzzle-task {
     @apply inline-block;
     @apply w-[100%];
-    @apply ml-[-21px];
-    @apply mt-[-21px];
+    @apply ml-[-22px];
+    @apply mt-[-27px];
   }
 
   &__after {

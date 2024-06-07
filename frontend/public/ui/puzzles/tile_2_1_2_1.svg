@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="_Слой_2" data-name="Слой 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 119 119">
+<svg id="_Слой_2" data-name="Слой 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 102 136">
   <defs>
     <style>
       .cls-1 {
@@ -10,7 +10,7 @@
   </defs>
   <g id="_Слой_2-2" data-name=" Слой 2">
     <rect class="cls-1" y="17" width="102" height="102" rx="9.12" ry="9.12"/>
-    <rect class="cls-1" x="85" y="51" width="34" height="34" rx="14.5" ry="14.5"/>
     <rect class="cls-1" x="34" width="34" height="34" rx="14.5" ry="14.5"/>
+    <rect class="cls-1" x="34" y="102" width="34" height="34" rx="14.5" ry="14.5"/>
   </g>
 </svg>
