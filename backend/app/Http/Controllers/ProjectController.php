@@ -69,4 +69,9 @@ class ProjectController extends Controller
         $user->analytics = $project->analytics;
         return $user;
     }
+
+    public function showAnalytics(Project $project)
+    {
+        return $project->makeVisible(['analytics']);
+    }
 }

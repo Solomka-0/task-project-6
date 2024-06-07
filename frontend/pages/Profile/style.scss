@@ -1,3 +1,30 @@
 .profile-page {
+  .profile-card {
+    @apply leading-6;
+    &__name {
+      @apply text-[18px] font-[500];
+    }
+  }
 
+  &__projects {
+    @apply p-2;
+    @apply rounded-xl;
+    @apply shadow-inner;
+    @apply flex flex-col gap-4;
+    @apply bg-zinc-100;
+
+    .project {
+      @apply p-3;
+      @apply bg-white;
+      @apply rounded-xl;
+    }
+  }
+
+  .puzzle-task-list {
+    @apply p-2 pt-5;
+    @apply rounded-xl;
+    @apply shadow-inner;
+    @apply flex flex-col gap-4;
+    @apply bg-zinc-100;
+  }
 }

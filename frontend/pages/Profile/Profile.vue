@@ -1,9 +1,20 @@
 <template>
   <div class="profile-page">
-    <div class="page-content container">
-      <profile-card v-if="user" v-model="user"/>
-      <div class="btn btn_primary">Назначить на проект</div>
-      <project-list v-model="user.projects"/>
+    <div v-if="user" class="page-content container">
+      <profile-card v-model="user"/>
+      <div class="mt-[20px]">
+        <div class="flex items-center gap-2">
+          <div class="h1">Проекты</div>
+          <div class="btn btn_green">+</div>
+        </div>
+        <project-list v-model="user.projects" class="profile-page__projects"/>
+      </div>
+      <div>
+        <div class="flex items-center gap-2 mt-[20px]">
+          <div class="h1">Последние задачи</div>
+        </div>
+        <puzzle-task-list v-model="tasks"/>
+      </div>
     </div>
   </div>
 </template>
@@ -14,6 +25,7 @@ import ProfileCard from "~/src/components/ProfileCard/ProfileCard.vue";
 import {useUserStore} from "~/stores/user.ts";
 import ProjectList from "~/src/components/ProjectList/ProjectList.vue";
 import {useUsersStore} from "~/stores/users.ts";
+import PuzzleTaskList from "~/src/components/PuzzleTaskList/PuzzleTaskList.vue";
 
 // i18
 const i18nPrefix = "pages.Profile"
@@ -24,10 +36,7 @@ const route = useRoute()
 useUsersStore().get(route.params.id)
 
 const {user} = route.params.id ? toRefs(useUsersStore()) : toRefs(useUserStore())
-
-// onMounted(() => {
-//   useUsersStore().get(route.params.id)
-// })
+const tasks = computed(() => user.value?.tasks.slice(0, 8))
 
 defineI18nRoute({
   paths: {

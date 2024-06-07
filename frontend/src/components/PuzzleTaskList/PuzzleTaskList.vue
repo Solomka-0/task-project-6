@@ -63,7 +63,7 @@ function render()
 function getSizes() {
   let width = window.getComputedStyle(mainRef.value).width
   width = parseInt(width.match(/(\w*).*px/)[1])
-  colSize.value = Math.ceil(width > 330 ? (width > 440 ? width / 200 : width / 230) : 1)
+  colSize.value = Math.ceil(width > 330 ? (width > 440 ? width / 220 : width / 230) : 1)
   rowSize.value = Math.ceil(tasks.value?.length / colSize.value)
 }
 

@@ -156,22 +156,32 @@ body {
   @apply py-4;
 }
 
+.h1 {
+  @apply text-[21px] font-[400];
+}
+
 .btn {
   transition: all .2s;
   @apply cursor-pointer;
   @apply py-1 px-2;
+  @apply leading-4;
   @apply inline-flex items-center justify-center;
   @apply text-center;
   @apply rounded;
 
   &_primary {
     @apply text-white;
-    @apply bg-blue-400;
+    @apply bg-blue-600;
   }
 
   &_red {
     @apply text-white;
-    @apply bg-red-500;
+    @apply bg-red-600;
+  }
+
+  &_green {
+    @apply text-white font-bold;
+    @apply bg-green-600;
   }
 
   &:hover {

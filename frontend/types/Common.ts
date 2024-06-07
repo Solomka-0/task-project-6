@@ -12,6 +12,17 @@ export type Project = {
             last_month: number,
             last_day: number,
             last_week: number,
+        },
+        chart: {
+            month: {
+                 [key: string]: number,
+            },
+            week: {
+                [key: string]: number,
+            },
+            day: {
+                [key: string]: number,
+            },
         }
     }
 }
@@ -39,6 +50,7 @@ export type User = {
     rules: Rule[],
     created_at: string,
     projects: Project[]
+    tasks: Task[]
 }
 
 export type Palette = {

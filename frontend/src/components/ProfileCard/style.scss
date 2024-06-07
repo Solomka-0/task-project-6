@@ -1,6 +1,16 @@
 .profile-card {
+  @apply h-[100%];
+  &>img {
+    @apply max-h-[72px];
+  }
+
   &_sm {
     .profile-card {
+      @apply w-[100%];
+      img {
+        @apply max-h-[32px];
+      }
+
       &__name {
         @apply text-[14px] font-[500];
       }
@@ -17,6 +27,20 @@
         @apply hidden;
       }
     }
+  }
+
+  &__created-at {
+    @apply flex gap-1 items-center;
+  }
+
+  &__rules {
+    transition: all .1s;
+    @apply cursor-pointer;
+    @apply px-2 py-0.5;
+    @apply rounded-xl;
+    @apply bg-amber-300;
+    @apply text-[14px];
+    @apply hover:opacity-90;
   }
 
   @apply p-2;

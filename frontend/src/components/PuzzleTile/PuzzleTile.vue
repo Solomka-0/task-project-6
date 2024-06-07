@@ -47,6 +47,10 @@ function initColor() {
   color.value = `rgb(${match![1]},${match![2]},${match![3]})`
 }
 
+onUpdated(() => {
+  initColor()
+})
+
 onMounted( async () => {
   initColor()
 })

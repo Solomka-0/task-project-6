@@ -1,0 +1,40 @@
+.project-analytics {
+  &__time {
+    @apply cursor-pointer;
+    @apply flex items-center gap-1;
+    img {
+      @apply h-[24px];
+    }
+
+    .project-analytics__hint {
+      visibility: hidden;
+      @apply opacity-0;
+    }
+
+    &:hover {
+      .project-analytics__hint {
+        visibility: visible;
+        @apply opacity-100;
+      }
+    }
+  }
+
+  &__time-value {
+    @apply text-[14px];
+  }
+
+  :has(&__hint) {
+    @apply relative
+  }
+
+  &__hint {
+    @apply absolute top-[-28px] left-[10px];
+    @apply min-w-[10ch];
+    @apply bg-zinc-900;
+    @apply text-white;
+    @apply text-[14px];
+    @apply px-2 py-1;
+    @apply rounded;
+    @apply opacity-80;
+  }
+}
