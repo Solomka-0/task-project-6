@@ -1,0 +1,45 @@
+.fridge {
+  @apply fixed right-0 top-0;
+  //@apply relative;
+  @apply h-[100%] w-[100%];
+  @apply pointer-events-none;
+  @apply opacity-100;
+  @apply bg-zinc-50 bg-opacity-5;
+
+  &__wrapper {
+    transition: all .3s;
+    @apply fixed right-0 top-0;
+    @apply h-[100%] w-[300px] max-w-[100%];
+    @apply pointer-events-none;
+    @apply opacity-100;
+    @apply flex flex-col justify-center;
+    @apply pt-[2vh] pb-[20px];
+  }
+
+  &__content {
+    @apply relative;
+    @apply bg-white;
+    @apply w-[100%] h-[100%];
+    @apply rounded-l-xl;
+    @apply shadow-xl;
+    @apply pointer-events-auto;
+    @apply border-2 border-dashed border-gray-100;
+  }
+
+  &__header {
+
+  }
+
+  &__body {
+    @apply p-2;
+  }
+
+  &__curtail-icon {
+    @apply absolute left-[-4px] top-[5px];
+    @apply h-[30px] cursor-pointer;
+  }
+
+  &__curtail {
+    @apply ml-[30px] mt-[2px] cursor-pointer;
+  }
+}

@@ -1,5 +1,3 @@
-import type {ReactiveVariable} from "vue/macros";
-
 export const useNotice = () => reactive(new NoticeQueue())
 
 export class Notice {
