@@ -1,9 +1,9 @@
 <template>
   <div class=project-analytics>
-    <div>
+    <div class="max-w-[700px] w-full">
       <bar-chart :chart-data="chartData" :height="250"/>
     </div>
-    <div class="flex gap-2">
+    <div class="max-w-[700px] w-full flex gap-2">
       <div class="project-analytics__time">
         <img src="/svg/analytics/startup.svg"/>
         <div class="project-analytics__time-value">{{ project!.analytics.time.full }} ч.</div>

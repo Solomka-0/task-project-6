@@ -12,7 +12,7 @@
     <div class="task-card__name h1">{{ task?.name }}</div>
     <div class="task-card__description">{{ task?.description }}</div>
     <div class="flex items-center gap-1 pr-4 relative">
-      <user-search class="task-card__user" :search="user?.name"/>
+      <user-search class="task-card__user" v-model:search="userName"/>
       <div class="task-card__created-at flex-1">
         <img src="/svg/analytics/calendar.svg" class="max-h-[20px]">
         <div class="task-card__value">{{ new Date(task!.created_at).toLocaleDateString() }}</div>
@@ -35,9 +35,16 @@ const nuxtApp = useNuxtApp()
 const $i = nuxtApp.$i(i18nPrefix)
 
 const task = defineModel<Task>()
-const user = computed(() => {
-  return task.value?.user ?  task.value?.user[0] : null
+const userName = ref(null)
+
+onActivated(() => {
+  console.log('nice1')
 })
+
+watch(task, () => {
+  userName.value = task.value?.user ?  task.value?.user[0].name : null
+})
+
 </script>
 
 <style lang="scss">

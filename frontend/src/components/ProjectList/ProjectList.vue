@@ -9,16 +9,19 @@
           name: $getPageName('Project'),
           params: {
           id: project.id
-        }})" class="project__name" target="_blank">
+        }})" class="project__name">
             {{ project.name }}
           </nuxt-link>
           <div class="project__description">{{ project.description }}</div>
         </div>
       </div>
       <div v-if="states[index]">
-        <puzzle-task-list :model-value="project.tasks.slice(0, 5)"/>
+        <puzzle-task-list :model-value="project.tasks.slice(0, 5)" @click:task="item => {task = item; taskState = true}"/>
       </div>
     </div>
+    <fridge v-model:state="taskState">
+      <task-card v-model="task"/>
+    </fridge>
   </div>
 </template>
 
@@ -26,6 +29,8 @@
 import { useDefaultState } from './composables/useDefault'
 import type {Project} from "~/types/Common";
 import PuzzleTaskList from "~/src/components/PuzzleTaskList/PuzzleTaskList.vue";
+import Fridge from "~/src/components/Fridge/Fridge.vue";
+import TaskCard from "~/src/components/TaskCard/TaskCard.vue";
 const ctx = useDefaultState()
 
 // i18
@@ -37,6 +42,8 @@ const localePath = useLocalePath()
 
 const states = ref([])
 const projects = defineModel<Project[]>()
+const taskState = ref(false)
+const task = ref(null)
 
 </script>
 

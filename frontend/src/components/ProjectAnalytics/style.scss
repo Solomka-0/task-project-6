@@ -1,4 +1,5 @@
 .project-analytics {
+  @apply flex flex-col gap-1 items-center;
   &__time {
     @apply cursor-pointer;
     @apply flex items-center gap-1;

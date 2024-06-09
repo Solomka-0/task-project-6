@@ -4,11 +4,22 @@
       <div>
         <div class="h1">Текущие проекты</div>
         <div>
-          <div class="" v-for="project in user.projects">
-            <div>{{ project.name }}</div>
-            <div>{{ project.description }}</div>
-            <div>
-              <puzzle-task-list :model-value="project.tasks.filter(item => item.user_id === user.id).slice(0, 8)" @click:task="item => {task = item; taskState = true}"/>
+          <div v-for="project in user.projects" class="flex flex-col gap-2">
+            <div class="project">
+              <img :src="`/logos/projects/${project.id}.png`" class="max-h-[64px]"/>
+              <div>
+                <nuxt-link :to="localePath({
+                name: $getPageName('Project'),
+                params: {
+                  id: project.id
+                }})" class="project__name" target="_blank">
+                  {{ project.name }}
+                </nuxt-link>
+                <div class="project__description">{{ project.description }}</div>
+              </div>
+            </div>
+            <div class="tasks">
+              <puzzle-task-list :model-value="project.tasks.filter(item => item.user_id === user.id).slice(0, 5)" @click:task="item => {task = item; taskState = true}"/>
             </div>
           </div>
         </div>

@@ -3,4 +3,50 @@
     @apply flex gap-3 items-center;
     @apply text-[16px];
   }
+
+  .tasks {
+    @apply bg-gray-200 rounded-2xl shadow-inner;
+    @apply overflow-x-auto overflow-y-hidden max-h-[160px];
+
+    &>div {
+      @apply min-w-[700px];
+    }
+
+    .puzzle-task {
+      @apply w-[150px];
+    }
+  }
+
+  .project {
+    transition: all 0.1s;
+    @apply relative;
+    @apply flex gap-2;
+
+    &__bookmark {
+      transition: all 0.1s;
+      @apply cursor-pointer;
+      @apply absolute top-[-5px] right-[30px];
+      @apply max-h-[24px];
+    }
+
+    &__name {
+      @apply cursor-pointer;
+      @apply text-[18px] font-[500];
+    }
+
+    &__tasks, &__users {
+      transition: all .3s;
+      @apply overflow-hidden;
+    }
+
+    &__tasks-label, &__users-label {
+      @apply select-none;
+      @apply cursor-pointer;
+    }
+
+    &__users {
+      @apply max-h-[10ch];
+      @apply overflow-auto;
+    }
+  }
 }
