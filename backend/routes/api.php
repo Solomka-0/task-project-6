@@ -31,7 +31,5 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::apiResource('/projects', \App\Http\Controllers\ProjectController::class);
     Route::get('/projects/{project}/users/{user}', [\App\Http\Controllers\ProjectController::class, 'showUser']);
     Route::get('/projects/{project}/analytics', [\App\Http\Controllers\ProjectController::class, 'showAnalytics']);
+    Route::get('/tasks/users/{user}', [\App\Http\Controllers\TasksController::class, 'showUserTasks']);
 });
-
-//Route::apiResource('/tasks', \App\Http\Controllers\TasksController::class)
-//    ->middleware('auth:sanctum');

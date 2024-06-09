@@ -1,31 +1,47 @@
 <template>
   <div class="home-page">
     <div class="page-content container">
-      <div></div>
+      <div>
+        <div class="h1">Текущие проекты</div>
+        <div>
+          <div class="" v-for="project in user.projects">
+            <div>{{ project.name }}</div>
+            <div>{{ project.description }}</div>
+            <div>
+              <puzzle-task-list :model-value="project.tasks.filter(item => item.user_id === user.id).slice(0, 8)" @click:task="item => {task = item; taskState = true}"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <fridge v-model:state="taskState">
+        <task-card v-model="task"/>
+      </fridge>
     </div>
   </div>
 </template>
 
 <script setup="ts">
 import {defineI18nRoute} from "#i18n";
-import {useLoader} from "~/src/components/Loader/composables/useLoader";
-import {useNotice} from "~/src/components/Notices/composables/useNotice";
+import {useProjectsStore} from "~/stores/projects.ts";
+import {useUsersStore} from "~/stores/users.ts";
+import {useUserStore} from "~/stores/user.ts";
+import PuzzleTaskList from "~/src/components/PuzzleTaskList/PuzzleTaskList.vue";
+import Fridge from "~/src/components/Fridge/Fridge.vue";
+import TaskCard from "~/src/components/TaskCard/TaskCard.vue";
 
-const loader = useLoader()
-const notices = useNotice()
 
 // i18
 const i18nPrefix = "pages.Home"
 const nuxtApp = useNuxtApp()
 const $i = nuxtApp.$i(i18nPrefix)
 
-const localePath = useLocalePath()
-const getPageName = nuxtApp.$getPageName
+await useUsersStore().get(useUserStore().user.id)
+// await useProjectsStore().get()
 
-
-const onError = () => {
-  throw new Error('Ошибка')
-}
+const {user} = toRefs(useUsersStore())
+const tasks = ref(user.value.tasks.slice(0, 8))
+const task = ref(null)
+const taskState = ref(false)
 
 defineI18nRoute({
   paths: {

@@ -1,40 +1,26 @@
 <template>
   <div class="my-tasks-module mt-module">
-    <div class="mt-module__headnote">
-      <div v-if="!!ctx" class="mt-module__filters inline-flex gap-4 items-center">
-        <div class="inline-flex flex-col gap-0">
-          <label class="text-[14px] text-gray-600">
-            Статус:
-          </label>
-          <div class="flex gap-2">
-            <div v-for="(status, key) in styles" @click="ctx.filters.status = key; setupFilters()" class="task-status" :style="{
-              '--status-color': status}">
-              {{ key }}
-            </div>
-          </div>
-        </div>
-        <div class="">
-          <div class="inline-flex flex-col gap-0">
-            <label class="text-[14px] text-gray-600">
-              Создано не раньше
-            </label>
-            <input type="datetime-local" v-model="ctx.filters.startFrom" @change="setupFilters">
-          </div>
-        </div>
-        <div class="btn btn_primary" @click="resetFilters">
-          Сбросить
-        </div>
-      </div>
+    <div class="h1">
+      Мои задачи
     </div>
-    <tasks v-if="!!tasks" v-model:tasks="tasks"/>
+    <div class="mt-module__task-list">
+      <puzzle-task-list v-if="tasks" v-model="tasks" @click:task="selectTask"/>
+    </div>
+    <fridge v-model:state="fridgeState">
+      <task-card v-model="task"/>
+    </fridge>
   </div>
 </template>
 
 <script setup lang='ts'>
 import {useDefaultState} from './composables/useDefault'
-import Tasks from "~/src/modules/MyTasks/components/Tasks/Tasks.vue";
-import GetTasks from "~/api/endpoints/tasks/GetTasks";
-import {taskStatusesPalette} from "~/types/Common";
+import GetUserTasks from "~/api/endpoints/tasks/GetUserTasks";
+import {useUserStore} from "~/stores/user";
+import PuzzleTaskList from "~/src/components/PuzzleTaskList/PuzzleTaskList.vue";
+import type {Task} from "~/types/Common";
+import {useFridge} from "~/src/components/Fridge/composables/useFridge";
+import Fridge from "~/src/components/Fridge/Fridge.vue";
+import TaskCard from "~/src/components/TaskCard/TaskCard.vue";
 
 const ctx = useDefaultState()
 
@@ -43,23 +29,16 @@ const i18nPrefix = "modules.MyTasks"
 const nuxtApp = useNuxtApp()
 const $i = nuxtApp.$i(i18nPrefix)
 
-const styles = taskStatusesPalette
+const tasks = await new GetUserTasks({
+  current: true
+}).request(useUserStore().user?.id)
+const task: Ref<Task | null> = ref(null)
+const fridgeState = ref(false)
 
-async function resetFilters() {
-  ctx.value.filters = {startFrom: undefined, status: undefined}
-  tasks.value = (await new GetTasks().request()).value
+function selectTask(item: Task) {
+  task.value = item
+  fridgeState.value = true
 }
-
-async function setupFilters() {
-  let tmp = await new GetTasks({
-    status: ctx.value.filters.status,
-    startFrom: new Date(ctx.value.filters.startFrom).toUTCString()
-  }).request()
-
-  tasks.value = tmp.value
-}
-
-const tasks = await new GetTasks().request()
 
 </script>
 

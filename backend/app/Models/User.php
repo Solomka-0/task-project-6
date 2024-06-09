@@ -66,7 +66,7 @@ class User extends Authenticatable
 
     public function getProjectsAttribute()
     {
-        return $this->projects()->get()->makeVisible('tasks');
+        return $this->projects()->get()->makeVisible(['users', 'tasks']);
     }
 
     public function projects(): BelongsToMany

@@ -19,6 +19,7 @@ export const useUsersStore = defineStore("users", {
             } else {
                 this.users = (await new GetUsers().request()).value
             }
+            return this
         },
         async usersLike(like: string) {
             this.results = (await new GetUsers({like: like}).request()).value

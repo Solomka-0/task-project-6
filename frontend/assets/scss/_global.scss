@@ -184,6 +184,11 @@ body {
     @apply bg-green-600;
   }
 
+  &_gray {
+    @apply text-gray-700;
+    @apply border border-solid border-gray-300
+  }
+
   &:hover {
     transition: all .2s;
     @apply opacity-85;

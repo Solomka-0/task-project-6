@@ -7,8 +7,8 @@
         <option :value="null">
           - Выберите вариант -
         </option>
-        <option v-for="selectOption in selectOptions" :value="selectOption.value">
-          {{ selectOption.caption }}
+        <option v-for="selectOption in selectOptions" :value="selectOption.value ?? selectOption.id">
+          {{ selectOption.caption ?? selectOption.name }}
         </option>
       </select>
       <input v-else class="f-input__input"

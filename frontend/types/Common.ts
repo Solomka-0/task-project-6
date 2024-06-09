@@ -32,8 +32,11 @@ export type Task = {
     name: string,
     description: string,
     status?: string,
+    priority: number,
+    user_id: number,
     created_at?: string,
     updated_at?: string,
+    user: User
 }
 
 export enum Rule {

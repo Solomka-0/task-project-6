@@ -41,6 +41,7 @@ class TaskStatusesSeeder extends Seeder
             $task->start_at = $statuses[$index]['start_at'] ? $minDateTime->addHours(rand(1, 24 * 30 * 6)) : null;
             /** @var \DateTime $startAt */
             $task->end_at = $statuses[$index]['end_at'] ? $task->start_at->addHours(rand(1, 24 * 8)) : null;
+            $task->priority = rand(0, 3);
 
             if (!empty($task->end_at) && Carbon::now()->lt(Carbon::parse($task->end_at->format('Y-m-d H:i:s')))) {
                 $task->end_at = Carbon::now();
@@ -48,5 +49,7 @@ class TaskStatusesSeeder extends Seeder
             $task->status = $statuses[$index]['status'];
             $task->save();
         }
+        Task::query()->where('end_at', '<', Carbon::now()->subMonth())->update(['status' => TaskStatus::COMPLETE->value]);
+        Task::query()->where('start_at', '>', Carbon::now()->subMonth())->limit(20)->update(['status' => TaskStatus::IN_PROCESS->value]);
     }
 }

@@ -1,20 +1,45 @@
 .mt-module {
-  .task-status {
-    @apply relative;
-    @apply inline-block;
-    @apply cursor-pointer;
-
-    --status-color: #ff5353;
-
-    @apply px-1.5;
-    @apply rounded-lg;
-    @apply text-white;
-    @apply drop-shadow;
-    @apply bg-[var(--status-color)];
-    @apply h-min;
+  &__task-list {
+    @apply overflow-hidden;
+    @apply rounded-xl;
+    .puzzle-task-list {
+      @apply overflow-y-auto;
+      @apply rounded-xl bg-zinc-100 shadow-inner;
+      @apply max-h-[484px];
+    }
   }
 
-  &__input-text {
-    @apply w-[100%];
+  .task {
+    @apply mt-[10px];
+    @apply leading-6;
+    @apply flex flex-col items-start;
+    &__name {
+      @apply font-[500];
+    }
+
+    &__description {
+    }
+
+    &__status {
+      @apply ml-auto;
+      @apply bg-gray-400;
+      @apply rounded-xl;
+      @apply text-white;
+      @apply px-2 py-0.5;
+      @apply cursor-pointer;
+    }
+
+    &__priority {
+
+    }
+
+    &__user {
+
+    }
+
+    &__create-at {
+
+    }
+
   }
 }

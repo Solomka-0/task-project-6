@@ -63,7 +63,9 @@ class Project extends Model
 
     public function getTasksAttribute()
     {
-        return $this->tasks()->get()->sortByDesc('priority')->values();
+        return Task::query()->whereIn('user_id', $this->users->pluck('id')->toArray())
+            ->orderBy('priority', 'desc')
+            ->orderBy('status', 'asc')->get()->makeVisible(['user']);
     }
 
     protected function getTime($tasks, CarbonPeriod $period = null)

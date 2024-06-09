@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\TaskStatus;
 use App\Models\Task;
+use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -102,5 +105,18 @@ class TasksController extends Controller
     public function destroy(Task $task)
     {
         $task->delete();
+    }
+
+    public function showUserTasks(Request $request, User $user)
+    {
+        /** @var Builder $query */
+        $query = Task::query()->where('user_id', $user->id);
+        if (!empty($request->input('current'))) {
+            $query = $query->whereIn('status', [TaskStatus::IN_PROCESS->value, TaskStatus::NOT_STARTED->value]);
+        }
+
+        return $query
+            ->orderBy('priority', 'desc')
+            ->orderBy('status', 'desc')->get()->makeVisible(['user']);
     }
 }

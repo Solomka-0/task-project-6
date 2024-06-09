@@ -1,0 +1,72 @@
+.task-card {
+  @apply mt-[10px];
+  @apply leading-6;
+  @apply flex flex-col items-start gap-1;
+
+  &__priority-point {
+    @apply h-[12px] w-[12px] rounded-full;
+  }
+
+  &__priority {
+    @apply cursor-pointer;
+    @apply px-2 py-[1px];
+    @apply border border-solid rounded-xl;
+  }
+
+  &__status {
+    @apply bg-gray-400;
+    @apply rounded-xl;
+    @apply text-white;
+    @apply px-2 py-0.5;
+    @apply cursor-pointer;
+  }
+
+  &__name {
+    @apply mt-2;
+  }
+
+  &__description {
+    @apply mb-2;
+  }
+
+  &__user {
+
+  }
+
+  .user-search__results {
+    @apply absolute left-0;
+    @apply w-[100%];
+    @apply bg-white shadow-md;
+    @apply rounded-md;
+    @apply p-1;
+    @apply gap-2;
+
+    .users-list {
+      * {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      &__item {
+        @apply px-2 py-1;
+        @apply rounded-md;
+      }
+      &__item:hover {
+        @apply bg-zinc-100;
+      }
+
+      &__name {
+      }
+
+      &__email {
+        @apply text-[14px] text-gray-600;
+      }
+    }
+  }
+
+  &__created-at {
+    @apply flex items-center gap-1;
+  }
+
+}

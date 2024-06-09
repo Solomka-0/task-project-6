@@ -1,7 +1,7 @@
 <template>
   <div class=user-search>
-    <f-input name="search" v-model="search" @focusin="ctx.focus = true" @focusout="ctx.focus = false"/>
-    <div class="user-search__results" :class="{'hidden': !ctx.focus}">
+    <f-input name="search" v-model="search" @focusin="ctx.focus = true" @focusout="focusout"/>
+    <div v-show="ctx.focus" class="user-search__results">
       <users-list v-model="results" type="results" @click:user="onSelect"/>
     </div>
   </div>
@@ -23,16 +23,31 @@ const $i = nuxtApp.$i(i18nPrefix)
 
 const {results} = toRefs(useUsersStore())
 const searchPending = useSearchPending(300)
-const search = ref('')
+const search = defineModel<string>('search')
 const selected = defineModel<User | undefined>()
 
 watch(search, () => {
-  searchPending.pending(з)
+  searchPending.pending(async () => {
+    if (!!search.value) {
+      await useUsersStore().usersLike(search.value)
+    }
+  })
 })
+
+function focusout() {
+  setTimeout(() => ctx.value.focus = false, 200)
+}
 
 function onSelect(user: User) {
   selected.value = user
+  search.value = user.name
 }
+
+onMounted(async () => {
+  if (!!search.value) {
+    await useUsersStore().usersLike(search.value)
+  }
+})
 </script>
 
 <style lang="scss">

@@ -30,7 +30,7 @@ class ProjectController extends Controller
     public function show(Project $project, Request $request)
     {
         $access = array_intersect([Role::ADMIN->value, Role::MANAGER->value], Auth::user()->rules);
-        if (empty($access) && !empty($request->query('analytics'))) {
+        if (empty($access) && !empty($request->query('analytics')) && !array_search(Auth::user()->id, $project->users->pluck('id')->toArray())) {
             throw new AccessDeniedHttpException();
         }
 
