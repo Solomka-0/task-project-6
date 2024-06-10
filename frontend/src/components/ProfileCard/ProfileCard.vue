@@ -18,6 +18,7 @@
 <script setup lang='ts'>
 import { useDefaultState } from './composables/useDefault'
 import {Rule, type User} from "~/types/Common";
+import UserAnalytics from "~/src/components/UserAnalytics/UserAnalytics.vue";
 const ctx = useDefaultState()
 
 // i18

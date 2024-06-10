@@ -16,7 +16,7 @@
     svg {
       transform: scale(1.05);
       opacity: 0.95;
-      filter: drop-shadow(1vw 3px 3px rgba(142, 142, 142, 0.5));
+      filter: drop-shadow(0.5vw 0.5vh 5px rgba(99, 99, 99, 0.51));
     }
 
     .puzzle-task__caption {
@@ -33,10 +33,7 @@
     -webkit-column-width: 120px;
     column-width: 120px;
     word-break: break-word;
-    text-shadow:
-            1px 1px #737373,
-            -1px -1px #737373,
-  ;
+    text-shadow: 0 0 5px #4a4a4a;
     @apply font-bold text-white;
   }
 }

@@ -50,6 +50,7 @@ await useUsersStore().get(useUserStore().user.id)
 // await useProjectsStore().get()
 
 const {user} = toRefs(useUsersStore())
+console.log(user.value)
 const tasks = ref(user.value.tasks.slice(0, 8))
 const task = ref(null)
 const taskState = ref(false)

@@ -1,33 +1,33 @@
 <template>
-  <div class=project-analytics>
+  <div class=user-analytics>
     <div class="max-w-[700px] w-full">
       <bar-chart :chart-data="chartData" :height="250"/>
     </div>
     <div class="max-w-[700px] w-full flex gap-2">
       <div class="project-analytics__time">
         <img src="/svg/analytics/startup.svg"/>
-        <div class="project-analytics__time-value">{{ project!.analytics.time.full }} ч.</div>
+        <div class="project-analytics__time-value">{{ user!.analytics.full.time.full }} ч.</div>
         <div class="project-analytics__hint">
           С начала
         </div>
       </div>
       <div class="project-analytics__time" @click="selectChart('month')">
         <img src="/svg/analytics/month.svg"/>
-        <div class="project-analytics__time-value">{{ project!.analytics.time.last_month }} ч.</div>
+        <div class="project-analytics__time-value">{{ user!.analytics.full.time.last_month }} ч.</div>
         <div class="project-analytics__hint">
           За месяц
         </div>
       </div>
       <div class="project-analytics__time" @click="selectChart('week')">
         <img src="/svg/analytics/calendar.svg"/>
-        <div class="project-analytics__time-value">{{ project!.analytics.time.last_week }} ч.</div>
+        <div class="project-analytics__time-value">{{ user!.analytics.full.time.last_week }} ч.</div>
         <div class="project-analytics__hint">
           За неделю
         </div>
       </div>
       <div class="project-analytics__time" @click="selectChart('day')">
         <img src="/svg/analytics/sun.svg"/>
-        <div class="project-analytics__time-value">{{ project!.analytics.time.last_day }} ч.</div>
+        <div class="project-analytics__time-value">{{ user!.analytics.full.time.last_day }} ч.</div>
         <div class="project-analytics__hint">
           За день
         </div>
@@ -38,16 +38,16 @@
 
 <script setup lang='ts'>
 import { useDefaultState } from './composables/useDefault'
-import type {Project} from "~/types/Common";
-import {BarChart, LineChart} from "vue-chart-3";
+import {BarChart} from "vue-chart-3";
+import type {Project, User} from "~/types/Common";
 const ctx = useDefaultState()
 
 // i18
-const i18nPrefix = "components.ProjectAnalytics"
+const i18nPrefix = "components.UserAnalytics"
 const nuxtApp = useNuxtApp()
 const $i = nuxtApp.$i(i18nPrefix)
 
-const project = defineModel<Project>()
+const user = defineModel<User>()
 
 const chartData = ref({
   labels: [],
@@ -59,8 +59,8 @@ const chartData = ref({
 })
 
 function selectChart(type: string = 'week') {
-  chartData.value.labels = Object.keys(project.value!.analytics.chart[type])
-  chartData.value.datasets[0].data = Object.values(project.value!.analytics.chart[type])
+  chartData.value.labels = Object.keys(user.value!.analytics?.full.chart[type])
+  chartData.value.datasets[0].data = Object.values(user.value!.analytics?.full.chart[type])
 }
 
 onMounted(() => {

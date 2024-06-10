@@ -39,7 +39,7 @@ const {left, top, h, w} = {
 }
 
 const taskStatusesPalette: Palette = {
-  'not started': 'rgb(255 162 162)',
+  'not started': 'rgb(214,214,214)',
   'in process': '#66a3e1',
   'complete': 'rgb(97 193 82)',
 }

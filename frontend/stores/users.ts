@@ -15,9 +15,9 @@ export const useUsersStore = defineStore("users", {
     actions: {
         async get(id?: number){
             if (id) {
-                this.user = (await new GetUser().request(id)).value
+                this.user = (await new GetUser({analytics: true}).request(id)).value
             } else {
-                this.users = (await new GetUsers().request()).value
+                this.users = (await new GetUsers({analytics: true}).request()).value
             }
             return this
         },

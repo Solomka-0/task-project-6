@@ -54,6 +54,49 @@ export type User = {
     created_at: string,
     projects: Project[]
     tasks: Task[]
+    analytics?: {
+        tasks: {
+            count: number
+        },
+        projects: {
+            count: number,
+            items: {
+                [key: number]: {
+                    chart: {
+                        month: {
+                            [key: string]: number,
+                        }
+                        week: {
+                            [key: string]: number,
+                        }
+                        day: {
+                            [key: string]: number,
+                        }
+                    }
+                }
+            }
+        },
+        full: {
+            time: {
+                full: number,
+                last_month: number,
+                last_day: number,
+                last_week: number,
+            },
+            chart: {
+                month: {
+                    [key: string]: number,
+                },
+                week: {
+                    [key: string]: number,
+                },
+                day: {
+                    [key: string]: number,
+                },
+            }
+
+        }
+    }
 }
 
 export type Palette = {
